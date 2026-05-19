@@ -105,12 +105,3 @@ unknown              未知，需审核
 3. 探索浏览器辅助下载、页面保存、截图 OCR、GUI 只读采集。
 4. 基于长期反馈学习账户、商户、分类、tag 和审核习惯。
 ```
-
-常用命令：
-
-```text
-uv sync
-uv add <package>
-uv run pytest
-uv run reconcilekit
-```
