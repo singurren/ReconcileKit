@@ -4,6 +4,8 @@
 
 目标：自动化采集多来源资金流水，识别同一真实交易在不同平台中的重复记录，判断资金流动归属，生成可导入钱迹和 Excel 的记账数据。
 
+项目使用 Python 实现，依赖、虚拟环境、运行和测试统一交给 uv 管理。
+
 账单采集按来源逐个适配：官方接口、平台导出文件、邮件账单、网页辅助下载、GUI 模拟、截图 / OCR。优先做稳定来源，不稳定来源保留人工接管。
 
 账户、分类、tag、审核习惯、匹配规则等长期规则保存在本地 md / yaml 文件中，随使用持续调整。
@@ -50,6 +52,15 @@
 
 ```text
 ReconcileKit/
+  pyproject.toml        # uv 项目配置
+  uv.lock               # uv 锁定文件
+  src/reconcilekit/     # Python 包
+    collectors/         # 文件、邮件、浏览器、OCR、GUI 等采集入口
+    parsers/            # 原始账单解析
+    normalizers/        # 标准化
+    matchers/           # 匹配和去重
+    reviewers/          # 审核任务和反馈处理
+    exporters/          # 钱迹 / Excel 导出
   data/                 # 本地数据库，不提交真实数据
   raw_data/             # 原始账单归档，不提交真实数据
   rules/                # 账户、分类、匹配和导出规则
@@ -57,13 +68,6 @@ ReconcileKit/
   reports/              # 审核报告
   exports/              # 钱迹 / Excel 导出结果
   logs/                 # 导入、匹配、导出日志
-  agent/
-    collectors/         # 文件、邮件、浏览器、OCR、GUI 等采集入口
-    parsers/            # 原始账单解析
-    normalizers/        # 标准化
-    matchers/           # 匹配和去重
-    reviewers/          # 审核任务和反馈处理
-    exporters/          # 钱迹 / Excel 导出
 ```
 
 真实账单、数据库、导出文件、日志和原始项目定义不进 git。
@@ -100,4 +104,13 @@ unknown              未知，需审核
 2. 增强银行流水、信用卡还款、退款关联、投资账户划拨和 Excel 投资台账更新。
 3. 探索浏览器辅助下载、页面保存、截图 OCR、GUI 只读采集。
 4. 基于长期反馈学习账户、商户、分类、tag 和审核习惯。
+```
+
+常用命令：
+
+```text
+uv sync
+uv add <package>
+uv run pytest
+uv run reconcilekit
 ```
