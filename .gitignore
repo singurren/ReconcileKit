@@ -1,0 +1,71 @@
+# 本地项目定义与工作记录
+归账_ReconcileKit_项目定义.md
+
+# Codex / Agent 本地上下文
+.codex/
+.agents/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# 本地数据库与敏感原始数据
+data/*
+!data/.gitkeep
+*.sqlite
+*.sqlite3
+*.db
+
+raw_data/**
+!raw_data/
+!raw_data/**/
+!raw_data/**/.gitkeep
+
+# 导入、报表、导出、日志产物
+imports/**
+!imports/
+!imports/**/
+!imports/**/.gitkeep
+
+reports/**
+!reports/
+!reports/**/
+!reports/**/.gitkeep
+
+exports/**
+!exports/
+!exports/**/
+!exports/**/.gitkeep
+
+logs/**
+!logs/
+!logs/**/
+!logs/**/.gitkeep
+
+# 可能包含个人财务信息的常见文件
+*.csv
+*.xlsx
+*.xls
+*.ofx
+*.qif
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.heic
+
+# 规则反馈中可能包含个人信息，默认本地保存
+rules/review_feedback.yaml

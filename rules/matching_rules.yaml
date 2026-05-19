@@ -1,0 +1,40 @@
+matching_rules:
+  payment_to_credit_card:
+    amount_tolerance: 0.01
+    time_window_days: 3
+    match_fields:
+      - amount
+      - merchant
+      - payment_channel
+
+  ecommerce_to_payment:
+    amount_tolerance: 0.01
+    time_window_days: 3
+    match_fields:
+      - amount
+      - order_id
+      - merchant
+
+  credit_card_repayment:
+    amount_tolerance: 0.01
+    time_window_days: 3
+    pattern:
+      bank_outflow: true
+      credit_card_inflow: true
+    result_type: credit_card_repay
+
+  investment_transfer:
+    amount_tolerance: 0.01
+    time_window_days: 3
+    pattern:
+      bank_outflow: true
+      investment_account_inflow: true
+    result_type: investment_transfer
+
+  refund:
+    amount_tolerance: 0.01
+    time_window_days: 180
+    pattern:
+      opposite_direction: true
+      similar_merchant: true
+    result_type: refund_candidate

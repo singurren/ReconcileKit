@@ -1,0 +1,4 @@
+qianji_export:
+  enabled: true
+  encoding: utf-8-sig
+  fields: []
